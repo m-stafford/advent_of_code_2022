@@ -61,18 +61,12 @@ int main(int argc, char **argv) {
 
     vis = (ctr **)realloc(vis, (y + 1) * sizeof(*vis));
     vis[y] = (ctr *)malloc((llen-1) * sizeof(ctr));
-    printf("POST ALLOC\n");
 
     for (int i = 0; i < llen - 1; i++) {
       grid[y][i] = line[i] - '0';
-      //vis[y][i].left = 0;
-      //vis[y][i].right = 0;
-      //vis[y][i].top = 0;
-      //vis[y][i].bottom = 0;
     }
 
     y++;
-    printf("POST FILL\n");
   }
   
   for (int i = 1; i < y - 1; i++) {
@@ -87,7 +81,6 @@ int main(int argc, char **argv) {
           vis[i][j].left++;
         }
       }
-      printf("POST LEFT\n");
 
       //RIGHT
       for (int l = j + 1; l < x; l++){
@@ -101,38 +94,16 @@ int main(int argc, char **argv) {
         
     }
   }
-  printf("POST LR\n");
-  printf("POST LR\n");
-  printf("POST LR\n");
-  printf("POST LR\n");
 
   for (int j = 1; j < x - 1; j++) {
     for (int i = 1; i < y - 1; i++) {
-      printf("IN TB\n");
       //TOP
       for (int l = i - 1; l >= 0; l--) {
-        printf("IN if TB\n");
-        printf("!!!! %d\n", grid[i][j]);
-        printf("!!!! %d %d\n", l, j);
-        printf("!!!! %d %d\n", i, j);
-        printf("%x\n", grid[i][j]);
-        printf("%x\n", grid[l][j]);
-
         if (grid[i][j] <= grid[l][j]) {
-          printf("TOP 0\n");
-          printf("TOP 0\n");
-          printf("TOP 0\n");
-          printf("TOP 0\n");
           vis[i][j].top++;
-          printf("TOP 1\n");
           break;
         } else if (grid[i][j] > grid[l][j]) {
-          printf("TOP 2\n");
-          printf("TOP 2\n");
-          printf("TOP 2\n");
-          printf("TOP 2\n");
           vis[i][j].top++;
-          printf("TOP 3\n");
         }
       }
 
@@ -148,7 +119,6 @@ int main(int argc, char **argv) {
         
     }
   }
-  printf("POST TB\n");
         
 
 
